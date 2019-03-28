@@ -1,11 +1,14 @@
 import express from 'express'
 import db from './db/db'
 import bodyParser from 'body-parser'
+import HomeRoute from './routes/index'
 
 const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use('/',HomeRoute)
 
 app.get('/api/v1/todos', (req, res) => {
     res.status(200).send({
